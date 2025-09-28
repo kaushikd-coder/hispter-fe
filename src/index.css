@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* (optional) v4 theming right in CSS */
+@theme {
+  --color-brand: #10b981;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+}
