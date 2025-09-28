@@ -62,6 +62,35 @@ To use local JSON files instead (for offline/local demo):
 
 ---
 
+## 🏗️ Architecture Overview
+
+- **Frontend:**  
+  Built with React, TypeScript, Redux Toolkit, and Tailwind CSS.  
+  State management (services, blogs) is handled via Redux slices.
+
+- **WordPress Integration:**  
+  The app fetches services and blog posts from a WordPress REST API (`/wp-json/wp/v2`).  
+  The API endpoint is set via the `VITE_WP_URL` environment variable.  
+  Data mapping is handled in the `mappers/` directory.
+
+- **Switching Data Source:**  
+  You can switch between fetching from WordPress and local JSON files by commenting/uncommenting code blocks in `src/store/slices/servicesSlice.ts` and `src/store/slices/blogsSlice.ts`.  
+  See code comments in those files for details.
+
+- **reCAPTCHA:**  
+  Google reCAPTCHA v2 is integrated for form security.  
+  The site key is set via `VITE_RECAPTCHA_SITE_KEY` in your `.env` file.  
+  A test key is provided for development.
+
+- **Security Headers:**  
+  - **Implemented:**  
+    - [vercel.json](vercel.json) sets HTTP security headers for production (e.g., `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Strict-Transport-Security`).
+    - SPA routing rewrites are also configured.
+  - **Planned:**  
+    - Further enhancements (CSP, rate limiting) can be added as needed.
+
+---
+
 ## 🌐 Deploying the Live Demo
 
 This project is ready for deployment on [Vercel](https://vercel.com/) or any static host.
